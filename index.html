@@ -84,3 +84,34 @@
       <article class="camera-feed premium-feed" data-camera="cam2"><div class="feed-image"><img id="cam-img-2" src="camera-rua.jpg" alt="Prévia ilustrativa de uma rua residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 02 <b>RUA</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Via pública / entorno</strong><small>Calçada • Rua • Vizinhança</small></div><button class="snapshot-one" data-snapshot="cam-img-2">⇩ Imagem</button></div></article>
       <article class="camera-feed premium-feed camera-garage" data-camera="cam3"><div class="feed-image"><img id="cam-img-3" src="camera-garagem.jpg" alt="Prévia ilustrativa de uma garagem residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 03 <b>GARAGEM</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Garagem e acesso interno</strong><small>Portão • Veículos • Área coberta</small></div><button class="snapshot-one" data-snapshot="cam-img-3">⇩ Imagem</button></div></article>
     </div>
+
+  <section class="page section" id="page-cart">
+    <span class="eyebrow">SEU PEDIDO</span><h2>CARRINHO</h2><div id="cart-items" class="cart-items"></div>
+    <div class="payment-panel"><div><span class="eyebrow">PAGAMENTO</span><h3>Escolha como deseja pagar</h3><p class="muted">Selecione uma forma de pagamento para registrar seu pedido.</p></div><div class="payment-options">
+<label class="payment-option"><input type="radio" name="payment-method" value="Pix" checked><span class="payment-symbol">PIX</span><span><b>Pix</b><small>Pagamento instantâneo</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Boleto bancário"><span class="payment-symbol">▤</span><span><b>Boleto bancário</b><small>Pagamento por código de barras</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Cartão de débito"><span class="payment-symbol">▣</span><span><b>Cartão de débito</b><small>Pagamento com cartão</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Cartão de crédito"><span class="payment-symbol">▣</span><span><b>Cartão de crédito</b><small>Consulte parcelamento disponível</small></span></label></div></div>
+<div class="cart-total"><div><span class="muted">TOTAL ESTIMADO</span><h3 id="cart-total">R$ 0,00</h3></div><button class="btn btn-red" id="checkout-btn">FINALIZAR PEDIDO</button></div>
+<p class="muted">O pedido ficará registrado como aguardando pagamento. Para gerar Pix, boleto ou processar cartões de verdade, o site precisará ser conectado a um intermediador de pagamento.</p><div id="checkout-feedback" class="checkout-feedback" aria-live="polite"></div>
+  </section>
+
+  <section class="page section" id="page-quote">
+    <span class="eyebrow">FALE COM A VOLTSEG</span><h2>SOLICITAR ORÇAMENTO</h2>
+    <form id="quote-form" class="form-grid">
+      <input name="nome" placeholder="Seu nome" required><input name="telefone" placeholder="Telefone / WhatsApp" required>
+      <select name="tipo" required><option value="">Tipo de ambiente</option><option>Residencial</option><option>Comercial</option><option>Industrial</option><option>Condomínio</option></select>
+      <textarea name="detalhes" placeholder="Conte um pouco sobre o que precisa..." rows="4"></textarea>
+      <button class="btn btn-red full">ENVIAR SOLICITAÇÃO</button>
+    </form>
+  </section>
+
+  <section class="page section intelligence-page" id="page-intelligence">
+    <div class="intel-topline"><div class="intel-brand"><span class="intel-shield">V</span><div><b>VOLTSEG <em>INTELLIGENCE</em></b><small>MONITORAMENTO RESIDENCIAL E EMPRESARIAL</small></div></div><div class="intel-live"><i class="live-dot"></i> PAINEL DEMONSTRATIVO</div></div>
+    <div class="intel-heading"><div><span class="eyebrow">CENTRAL DE MONITORAMENTO</span><h2>VISÃO GERAL <span class="red">DAS CÂMERAS</span></h2><p>Três pontos estratégicos em uma única central de visualização.</p></div><div class="clock-card"><small>HORÁRIO LOCAL</small><strong id="camera-clock">--:--:--</strong><span id="camera-date">--/--/----</span></div></div>
+    <div class="monitor-toolbar"><div class="monitor-status"><i class="live-dot"></i><b>SISTEMA EM DEMONSTRAÇÃO</b><span>3 câmeras cadastradas</span></div><div class="layout-actions"><button class="layout-btn active" data-layout="grid" title="Grade">▦ Grade</button><button class="layout-btn" data-layout="focus" title="Destaque">▣ Destaque</button><button class="layout-btn" id="snapshot-all">⇩ Salvar imagens</button></div></div>
+    <div class="demo-grid premium-grid" id="camera-grid">
+      <article class="camera-feed premium-feed" data-camera="cam1"><div class="feed-image"><img id="cam-img-1" src="camera-frente-casa.jpg" alt="Prévia ilustrativa da frente de uma casa"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 01 <b>FRENTE DA CASA</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Entrada principal</strong><small>Portão • Fachada • Acesso social</small></div><button class="snapshot-one" data-snapshot="cam-img-1">⇩ Imagem</button></div></article>
+      <article class="camera-feed premium-feed" data-camera="cam2"><div class="feed-image"><img id="cam-img-2" src="camera-rua.jpg" alt="Prévia ilustrativa de uma rua residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 02 <b>RUA</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Via pública / entorno</strong><small>Calçada • Rua • Vizinhança</small></div><button class="snapshot-one" data-snapshot="cam-img-2">⇩ Imagem</button></div></article>
+      <article class="camera-feed premium-feed camera-garage" data-camera="cam3"><div class="feed-image"><img id="cam-img-3" src="camera-garagem.jpg" alt="Prévia ilustrativa de uma garagem residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 03 <b>GARAGEM</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Garagem e acesso interno</strong><small>Portão • Veículos • Área coberta</small></div><button class="snapshot-one" data-snapshot="cam-img-3">⇩ Imagem</button></div></article>
+    </div>
