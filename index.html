@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0d">
+  <title>Voltseg | Segurança e tecnologia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" data-page="home"><span class="brand-mark">V</span><span>VOLT<span class="red">SEG</span><small>SEGURANÇA E TECNOLOGIA</small></span></a>
+  <nav class="main-nav">
+    <a href="#" data-page="home">Início</a><a href="#" data-page="products">Produtos</a>
+    <a href="#" data-page="intelligence">Monitoramento</a>
+    <a href="#" data-page="employee">Área do funcionário</a>
+  </nav>
+  <button class="cart-link" data-page="cart">Carrinho <b id="cart-count">0</b></button>
+</header>
+
+<main>
+  <section class="page active" id="page-home">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">PROTEÇÃO • CONTROLE • INTELIGÊNCIA</span>
+        <h1>TECNOLOGIA QUE<br><span class="red">PROTEGE</span> Qualquer <br>Tipo de Imovel</h1>
+        <p>Soluções em câmeras, alarmes e controle de acesso para residências e empresas.</p>
+        <div class="actions"><button class="btn btn-red" data-page="products">VER PRODUTOS</button><button class="btn btn-outline" data-page="quote">SOLICITAR ORÇAMENTO</button></div>
+        <div class="hero-points"><span>✓ Atendimento especializado</span><span>✓ Soluções personalizadas</span><span>✓ Tecnologia integrada</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="image-slot hero-image"><img id="hero-preview" src="images/Central de Monitoramento Voltseg.png" alt="Câmera de segurança"></div>
+        <div class="image-caption"><i class="dot"></i> SISTEMAS DE SEGURANÇA</div>
+      </div>
+    </section>
+    <section class="trust-strip"><div><strong>4K</strong><span>ALTA RESOLUÇÃO</span></div><div><strong>24H</strong><span>MONITORAMENTO</span></div><div><strong>360°</strong><span>COBERTURA</span></div><div><strong>100%</strong><span>FOCO EM PROTEÇÃO</span></div></section>
+    <section class="section">
+      <div class="section-heading"><div><span class="eyebrow">SOLUÇÕES VOLTSEG</span><h2>SEGURANÇA COMPLETA</h2><p>Conheça algumas das nossas categorias.</p></div></div>
+      <div class="category-grid">
+        <button class="category-card" data-category-link="Câmeras"><span>◉</span><b>Câmeras</b><small>Imagem e monitoramento</small></button>
+        <button class="category-card" data-category-link="Alarmes"><span>⌁</span><b>Alarmes</b><small>Detecção e alertas</small></button>
+        <button class="category-card" data-category-link="Controle de acesso"><span>▣</span><b>Controle de acesso</b><small>Gestão de entradas</small></button>
+      </div>
+    </section>
+  </section>
+
+  <section class="page section" id="page-products">
+    <div class="section-heading"><div><span class="eyebrow">CATÁLOGO VOLTSEG</span><h2>NOSSOS PRODUTOS</h2><p>Selecione os produtos e adicione ao carrinho.</p></div><input class="search" id="product-search" placeholder="Buscar produto..."></div>
+    <div class="filters" id="category-filters">
+      <button class="filter active" data-category="Todos">Todos</button><button class="filter" data-category="Câmeras">Câmeras</button><button class="filter" data-category="Alarmes">Alarmes</button><button class="filter" data-category="Controle de acesso">Controle de acesso</button><button class="filter" data-category="Perímetro">Perímetro</button><button class="filter" data-category="Gravadores">Gravadores</button>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+  </section>
+
+  <section class="page section" id="page-cart">
+    <span class="eyebrow">SEU PEDIDO</span><h2>CARRINHO</h2><div id="cart-items" class="cart-items"></div>
+    <div class="payment-panel"><div><span class="eyebrow">PAGAMENTO</span><h3>Escolha como deseja pagar</h3><p class="muted">Selecione uma forma de pagamento para registrar seu pedido.</p></div><div class="payment-options">
+<label class="payment-option"><input type="radio" name="payment-method" value="Pix" checked><span class="payment-symbol">PIX</span><span><b>Pix</b><small>Pagamento instantâneo</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Boleto bancário"><span class="payment-symbol">▤</span><span><b>Boleto bancário</b><small>Pagamento por código de barras</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Cartão de débito"><span class="payment-symbol">▣</span><span><b>Cartão de débito</b><small>Pagamento com cartão</small></span></label>
+<label class="payment-option"><input type="radio" name="payment-method" value="Cartão de crédito"><span class="payment-symbol">▣</span><span><b>Cartão de crédito</b><small>Consulte parcelamento disponível</small></span></label></div></div>
+<div class="cart-total"><div><span class="muted">TOTAL ESTIMADO</span><h3 id="cart-total">R$ 0,00</h3></div><button class="btn btn-red" id="checkout-btn">FINALIZAR PEDIDO</button></div>
+<p class="muted">O pedido ficará registrado como aguardando pagamento. Para gerar Pix, boleto ou processar cartões de verdade, o site precisará ser conectado a um intermediador de pagamento.</p><div id="checkout-feedback" class="checkout-feedback" aria-live="polite"></div>
+  </section>
+
+  <section class="page section" id="page-quote">
+    <span class="eyebrow">FALE COM A VOLTSEG</span><h2>SOLICITAR ORÇAMENTO</h2>
+    <form id="quote-form" class="form-grid">
+      <input name="nome" placeholder="Seu nome" required><input name="telefone" placeholder="Telefone / WhatsApp" required>
+      <select name="tipo" required><option value="">Tipo de ambiente</option><option>Residencial</option><option>Comercial</option><option>Industrial</option><option>Condomínio</option></select>
+      <textarea name="detalhes" placeholder="Conte um pouco sobre o que precisa..." rows="4"></textarea>
+      <button class="btn btn-red full">ENVIAR SOLICITAÇÃO</button>
+    </form>
+  </section>
+
+  <section class="page section intelligence-page" id="page-intelligence">
+    <div class="intel-topline"><div class="intel-brand"><span class="intel-shield">V</span><div><b>VOLTSEG <em>INTELLIGENCE</em></b><small>MONITORAMENTO RESIDENCIAL E EMPRESARIAL</small></div></div><div class="intel-live"><i class="live-dot"></i> PAINEL DEMONSTRATIVO</div></div>
+    <div class="intel-heading"><div><span class="eyebrow">CENTRAL DE MONITORAMENTO</span><h2>VISÃO GERAL <span class="red">DAS CÂMERAS</span></h2><p>Três pontos estratégicos em uma única central de visualização.</p></div><div class="clock-card"><small>HORÁRIO LOCAL</small><strong id="camera-clock">--:--:--</strong><span id="camera-date">--/--/----</span></div></div>
+    <div class="monitor-toolbar"><div class="monitor-status"><i class="live-dot"></i><b>SISTEMA EM DEMONSTRAÇÃO</b><span>3 câmeras cadastradas</span></div><div class="layout-actions"><button class="layout-btn active" data-layout="grid" title="Grade">▦ Grade</button><button class="layout-btn" data-layout="focus" title="Destaque">▣ Destaque</button><button class="layout-btn" id="snapshot-all">⇩ Salvar imagens</button></div></div>
+    <div class="demo-grid premium-grid" id="camera-grid">
+      <article class="camera-feed premium-feed" data-camera="cam1"><div class="feed-image"><img id="cam-img-1" src="images/camera-frente-casa.jpg" alt="Prévia ilustrativa da frente de uma casa"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 01 <b>FRENTE DA CASA</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Entrada principal</strong><small>Portão • Fachada • Acesso social</small></div><button class="snapshot-one" data-snapshot="cam-img-1">⇩ Imagem</button></div></article>
+      <article class="camera-feed premium-feed" data-camera="cam2"><div class="feed-image"><img id="cam-img-2" src="images/camera-rua.jpg" alt="Prévia ilustrativa de uma rua residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 02 <b>RUA</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Via pública / entorno</strong><small>Calçada • Rua • Vizinhança</small></div><button class="snapshot-one" data-snapshot="cam-img-2">⇩ Imagem</button></div></article>
+      <article class="camera-feed premium-feed camera-garage" data-camera="cam3"><div class="feed-image"><img id="cam-img-3" src="images/camera-garagem.jpg" alt="Prévia ilustrativa de uma garagem residencial"><div class="feed-overlay"><span><i class="live-dot"></i> CAM 03 <b>GARAGEM</b></span><strong>4K</strong></div><button class="expand-camera" title="Ampliar câmera">⛶</button><span class="feed-time">DEMO • IMAGEM ILUSTRATIVA</span></div><div class="camera-meta"><div><strong>Garagem e acesso interno</strong><small>Portão • Veículos • Área coberta</small></div><button class="snapshot-one" data-snapshot="cam-img-3">⇩ Imagem</button></div></article>
+    </div>
+    <div class="intel-bottom"><div class="intel-info-card"><span class="info-icon">▣</span><div><b>03</b><small>PONTOS DE VISUALIZAÇÃO</small></div></div><div class="intel-info-card"><span class="info-icon">◈</span><div><b>4K</b><small>REFERÊNCIA DE RESOLUÇÃO</small></div></div><div class="intel-info-card"><span class="info-icon">◷</span><div><b>24H</b><small>CONCEITO DE MONITORAMENTO</small></div></div><div class="intel-info-card"><span class="info-icon">⌁</span><div><b>Local</b><small>PRÉVIAS NESTE SITE</small></div></div></div>
+    <div class="panel"><div class="panel-heading"><div><h3>Central de eventos demonstrativos</h3><p class="muted">Os eventos abaixo são simulados para demonstrar a interface.</p></div><button class="btn btn-red" id="new-alert">＋ GERAR EVENTO</button></div><div id="alerts"><p class="muted">Central iniciada em modo de demonstração.</p></div></div>
+    <p class="notice">Atenção: as imagens são ilustrações estáticas. Esta demonstração não acessa câmeras reais, não transmite vídeo e não grava. Para monitoramento verdadeiro, conecte DVR/NVR ou câmeras IP compatíveis por uma integração segura e autorizada.</p>
+    <div id="camera-lightbox" class="camera-lightbox" hidden><button id="close-lightbox" aria-label="Fechar">×</button><img id="lightbox-image" alt="Visualização ampliada da câmera"><span id="lightbox-title"></span></div>
+  </section>
+
+  <section class="page section" id="page-employee">
+    <div class="admin-heading"><div><span class="eyebrow">ACESSO INTERNO</span><h2>ÁREA DO FUNCIONÁRIO</h2><p>Entre para administrar o catálogo e as imagens exibidas na loja.</p></div><span class="admin-pill">PAINEL INTERNO</span></div>
+    <div id="employee-login" class="login-card"><h3>Entrar no painel</h3><form id="login-form" class="stack-form"><input id="username" placeholder="Usuário" value="funcionario" required><input id="password" type="password" placeholder="Senha" required><button class="btn btn-red">ENTRAR</button></form><small>Para esta demonstração: usuário <b>funcionario</b> e senha <b>voltseg123</b>.</small></div>
+    <div id="employee-dashboard" hidden>
+      <div class="admin-heading"><div><h3>PAINEL DE GESTÃO</h3><p>Produtos e pedidos salvos neste navegador.</p></div><button class="btn btn-outline" id="logout-btn">SAIR</button></div>
+      <div class="stats-grid"><article class="stat-card"><span>PRODUTOS</span><strong id="stat-products">0</strong></article><article class="stat-card"><span>ITENS EM ESTOQUE</span><strong id="stat-stock">0</strong></article><article class="stat-card"><span>PEDIDOS</span><strong id="stat-orders">0</strong></article><article class="stat-card"><span>TOTAL SOLICITADO</span><strong id="stat-revenue">R$ 0,00</strong></article></div>
+      <div class="admin-columns">
+        <section class="panel"><h3 id="product-form-title">Adicionar produto</h3><form id="product-form" class="stack-form">
+          <input name="name" placeholder="Nome do produto" required><input name="category" placeholder="Categoria" required>
+          <input name="price" type="number" min="0" step="0.01" placeholder="Preço (R$)" required><input name="stock" type="number" min="0" step="1" placeholder="Estoque" required>
+          <label class="upload-box"> <b>＋ Adicionar imagem do produto</b><span>Escolha uma imagem do computador</span><input type="file" name="imageFile" accept="image/*"></label>
+          <input name="imageUrl" type="url" placeholder="Ou cole a URL de uma imagem (opcional)">
+          <textarea name="description" placeholder="Descrição do produto" rows="3"></textarea><div class="form-actions"><button class="btn btn-red" id="save-product-btn">SALVAR PRODUTO</button><button class="btn btn-outline" type="button" id="cancel-edit-btn" hidden>CANCELAR EDIÇÃO</button></div>
+        </form></section>
+        <section class="panel"><div class="panel-heading"><h3>Produtos cadastrados</h3><button class="text-button" id="reset-products">Restaurar exemplos</button></div><div class="table-wrap"><table><thead><tr><th>Produto</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody id="products-table"></tbody></table></div></section>
+      </div>
+      <section class="panel"><h3>Imagens do site</h3><p class="muted">Troque a imagem principal e as três imagens da prévia de monitoramento (frente da casa, rua e garagem).</p>
+        <div class="image-manager">
+          <label class="upload-box">Imagem principal da página inicial<input type="file" accept="image/*" data-site-image="hero"></label>
+          <label class="upload-box">Câmera 01 — Frente da casa<input type="file" accept="image/*" data-site-image="cam1"></label>
+          <label class="upload-box">Câmera 02 — Rua<input type="file" accept="image/*" data-site-image="cam2"></label>
+          <label class="upload-box">Câmera 03 — Garagem<input type="file" accept="image/*" data-site-image="cam3"></label>
+        </div>
+      </section>
+      <section class="panel"><h3>Pedidos recebidos neste navegador</h3><div id="orders-list"><p class="muted">Ainda não há pedidos.</p></div></section>
+      <p class="notice">Demonstração local: login e dados ficam no navegador e não são seguros para uso empresarial real. Para vários funcionários e clientes em dispositivos diferentes, publique com backend, banco de dados e autenticação segura.</p>
+    </div>
+  </section>
+</main>
+<footer><div class="brand"><span class="brand-mark">V</span><span>VOLT<span class="red">SEG</span><small>SEGURANÇA E TECNOLOGIA</small></span></div><p>© 2026 Voltseg • Site demonstrativo</p><p>Proteção, confiança e tecnologia.</p></footer>
+</body></html>
