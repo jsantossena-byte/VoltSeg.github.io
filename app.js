@@ -1,13 +1,13 @@
-const DB="voltseg_products_v7", CART="voltseg_cart_v2", ORDERS="voltseg_orders_v2", IMAGES="voltseg_site_images_v1";
+const DB="voltseg_products_v9", CART="voltseg_cart_v2", ORDERS="voltseg_orders_v2", IMAGES="voltseg_site_images_v1";
 const seed=[
-{id:1,name:"Câmera Bullet 4K",category:"Câmeras",price:489.90,stock:12,description:"Imagem 4K, visão noturna e detecção inteligente.",image:"camera-frente-casa.jpg",tag:"Mais vendido"},
-{id:2,name:"Câmera PTZ com Zoom",category:"Câmeras",price:1299.90,stock:5,description:"Movimentação panorâmica, zoom óptico e monitoramento remoto.",image:"camera-rua.jpg",tag:"Tecnologia"},
-{id:3,name:"Câmera Térmica",category:"Câmeras",price:2490,stock:3,description:"Monitoramento térmico para aplicações profissionais.",image:"monitoramento-premium.png",tag:"Profissional"},
-{id:4,name:"Câmera com Proteção Balística",category:"Câmeras",price:3890,stock:2,description:"Modelo ilustrativo. Confirme laudos e certificações com o fabricante.",image:"camera-garagem.jpg",tag:"Linha especial"},
-{id:5,name:"Central de Alarme Wi-Fi",category:"Alarmes",price:699.90,stock:8,description:"Central com aplicativo, sensores e notificações.",image:"monitoramento.png",tag:"Conectado"},
+{id:1,name:"Câmera Bullet 4K",category:"Câmeras",price:489.90,stock:12,description:"Imagem 4K, visão noturna e detecção inteligente.",image:"https://unsplash.com",tag:"Mais vendido"},
+{id:2,name:"Câmera PTZ com Zoom",category:"Câmeras",price:1299.90,stock:5,description:"Movimentação panorâmica, zoom óptico e monitoramento remoto.",image:"https://unsplash.com",tag:"Tecnologia"},
+{id:3,name:"Câmera Térmica",category:"Câmeras",price:2490,stock:3,description:"Monitoramento térmico para aplicações profissionais.",image:"https://unsplash.com",tag:"Profissional"},
+{id:4,name:"Câmera com Proteção Balística",category:"Câmeras",price:3890,stock:2,description:"Modelo ilustrativo. Confirme laudos e certificações com o fabricante.",image:"https://unsplash.com",tag:"Linha especial"},
+{id:5,name:"Central de Alarme Wi-Fi",category:"Alarmes",price:699.90,stock:8,description:"Central com aplicativo, sensores e notificações.",image:"https://unsplash.com",tag:"Conectado"},
 {id:6,name:"Controle de Acesso Biométrico",category:"Controle de acesso",price:899.90,stock:6,description:"Acesso por biometria, senha e cartão conforme o modelo.",image:"controle-acesso-biometria.png",tag:"Empresas"},
-{id:7,name:"Kit de Cerca Elétrica",category:"Perímetro",price:558.90,stock:10,description:"Kit para proteção perimetral. Instalação por profissional habilitado.",image:"monitoramento-referencia.png",tag:"Proteção"},
-{id:8,name:"Gravador NVR 8 Canais",category:"Gravadores",price:799.90,stock:7,description:"Gravação e gerenciamento de câmeras IP compatíveis.",image:"monitoramento.png",tag:"Sistema"}
+{id:7,name:"Kit de Cerca Elétrica",category:"Perímetro",price:558.90,stock:10,description:"Kit para proteção perimetral. Instalação por profissional habilitado.",image:"https://unsplash.com",tag:"Proteção"},
+{id:8,name:"Gravador NVR 8 Canais",category:"Gravadores",price:799.90,stock:7,description:"Gravação e gerenciamento de câmeras IP compatíveis.",image:"https://unsplash.com",tag:"Sistema"}
 ];
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}, write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
@@ -68,10 +68,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  $("#category-filters").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(!b)return;$$(".filter").forEach(x=>x.classList.toggle("active",x===b));renderProducts(b.dataset.category,$("#product-search").value)});
  $("#product-search").addEventListener("input",()=>renderProducts($(".filter.active")?.dataset.category||"Todos",$("#product-search").value));
  $("#checkout-btn").addEventListener("click",checkout);
- $("#quote-form").addEventListener("submit",e=>{e.preventDefault();alert("Solicitação preenchida. Para receber e armazenar orçamentos de clientes, conecte o formulário a um servidor ou sistema de atendimento.");e.target.reset()});
- $("#login-form").addEventListener("submit",e=>{e.preventDefault();if($("#username").value==="funcionario"&&$("#password").value==="voltseg123"){sessionStorage.setItem("voltseg_employee","yes");$("#employee-login").hidden=true;$("#employee-dashboard").hidden=false;refreshAdmin()}else alert("Usuário ou senha incorretos.")});
 
- $$(".premium-feed").forEach(card=>card.addEventListener("dblclick",()=>{const grid=$("#camera-grid");grid.classList.add("focus-mode");$$(".premium-feed").forEach(c=>c.classList.toggle("focused",c===card));$$("[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout==="focus"))}));
  if(sessionStorage.getItem("voltseg_employee")==="yes"){$("#employee-login").hidden=true;$("#employee-dashboard").hidden=false;refreshAdmin()}
  renderProducts();renderCart();loadSiteImages();
 });
