@@ -1,13 +1,13 @@
-const DB="voltseg_products_v2", CART="voltseg_cart_v2", ORDERS="voltseg_orders_v2", IMAGES="voltseg_site_images_v1";
+const DB="voltseg_products_v7", CART="voltseg_cart_v2", ORDERS="voltseg_orders_v2", IMAGES="voltseg_site_images_v1";
 const seed=[
-{id:1,name:"Câmera Bullet 4K",category:"Câmeras",price:489.90,stock:12,description:"Imagem 4K, visão noturna e detecção inteligente.",image:"https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?auto=format&fit=crop&w=900&q=85",tag:"Mais vendido"},
-{id:2,name:"Câmera PTZ com Zoom",category:"Câmeras",price:1299.90,stock:5,description:"Movimentação panorâmica, zoom óptico e monitoramento remoto.",image:"https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=900&q=85",tag:"Tecnologia"},
-{id:3,name:"Câmera Térmica",category:"Câmeras",price:2490,stock:3,description:"Monitoramento térmico para aplicações profissionais.",image:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85",tag:"Profissional"},
-{id:4,name:"Câmera com Proteção Balística",category:"Câmeras",price:3890,stock:2,description:"Modelo ilustrativo. Confirme laudos e certificações com o fabricante.",image:"https://images.unsplash.com/photo-1557597774-9d273605a5b7?auto=format&fit=crop&w=900&q=85",tag:"Linha especial"},
-{id:5,name:"Central de Alarme Wi-Fi",category:"Alarmes",price:699.90,stock:8,description:"Central com aplicativo, sensores e notificações.",image:"https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=85",tag:"Conectado"},
-{id:6,name:"Controle de Acesso Biométrico",category:"Controle de acesso",price:899.90,stock:6,description:"Acesso por biometria, senha e cartão conforme o modelo.",image:"https://images.unsplash.com/photo-1557597774-9d273605a5b7?auto=format&fit=crop&w=900&q=85",tag:"Empresas"},
-{id:7,name:"Kit de Cerca Elétrica",category:"Perímetro",price:558.90,stock:10,description:"Kit para proteção perimetral. Instalação por profissional habilitado.",image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85",tag:"Proteção"},
-{id:8,name:"Gravador NVR 8 Canais",category:"Gravadores",price:799.90,stock:7,description:"Gravação e gerenciamento de câmeras IP compatíveis.",image:"https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?auto=format&fit=crop&w=900&q=85",tag:"Sistema"}
+{id:1,name:"Câmera Bullet 4K",category:"Câmeras",price:489.90,stock:12,description:"Imagem 4K, visão noturna e detecção inteligente.",image:"camera-frente-casa.jpg",tag:"Mais vendido"},
+{id:2,name:"Câmera PTZ com Zoom",category:"Câmeras",price:1299.90,stock:5,description:"Movimentação panorâmica, zoom óptico e monitoramento remoto.",image:"camera-rua.jpg",tag:"Tecnologia"},
+{id:3,name:"Câmera Térmica",category:"Câmeras",price:2490,stock:3,description:"Monitoramento térmico para aplicações profissionais.",image:"monitoramento-premium.png",tag:"Profissional"},
+{id:4,name:"Câmera com Proteção Balística",category:"Câmeras",price:3890,stock:2,description:"Modelo ilustrativo. Confirme laudos e certificações com o fabricante.",image:"camera-garagem.jpg",tag:"Linha especial"},
+{id:5,name:"Central de Alarme Wi-Fi",category:"Alarmes",price:699.90,stock:8,description:"Central com aplicativo, sensores e notificações.",image:"monitoramento.png",tag:"Conectado"},
+{id:6,name:"Controle de Acesso Biométrico",category:"Controle de acesso",price:899.90,stock:6,description:"Acesso por biometria, senha e cartão conforme o modelo.",image:"controle-acesso-biometria.png",tag:"Empresas"},
+{id:7,name:"Kit de Cerca Elétrica",category:"Perímetro",price:558.90,stock:10,description:"Kit para proteção perimetral. Instalação por profissional habilitado.",image:"monitoramento-referencia.png",tag:"Proteção"},
+{id:8,name:"Gravador NVR 8 Canais",category:"Gravadores",price:799.90,stock:7,description:"Gravação e gerenciamento de câmeras IP compatíveis.",image:"monitoramento.png",tag:"Sistema"}
 ];
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}, write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
@@ -70,29 +70,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  $("#checkout-btn").addEventListener("click",checkout);
  $("#quote-form").addEventListener("submit",e=>{e.preventDefault();alert("Solicitação preenchida. Para receber e armazenar orçamentos de clientes, conecte o formulário a um servidor ou sistema de atendimento.");e.target.reset()});
  $("#login-form").addEventListener("submit",e=>{e.preventDefault();if($("#username").value==="funcionario"&&$("#password").value==="voltseg123"){sessionStorage.setItem("voltseg_employee","yes");$("#employee-login").hidden=true;$("#employee-dashboard").hidden=false;refreshAdmin()}else alert("Usuário ou senha incorretos.")});
- $("#logout-btn").addEventListener("click",()=>{sessionStorage.removeItem("voltseg_employee");$("#employee-dashboard").hidden=true;$("#employee-login").hidden=false});
- $("#product-form").addEventListener("submit",async e=>{
-  e.preventDefault();const f=e.target;const data=Object.fromEntries(new FormData(f));const list=products();const editId=Number(f.dataset.editId||0);const existing=list.find(p=>p.id===editId);
-  let image=data.imageUrl||existing?.image||"https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?auto=format&fit=crop&w=900&q=85";
-  const file=f.elements.imageFile.files[0];if(file)image=await compressImage(file);
-  const record={id:existing?existing.id:Date.now(),name:data.name,category:data.category,price:Number(data.price),stock:Number(data.stock),description:data.description||"Consulte detalhes com nossa equipe.",image,tag:existing?.tag||"Novo"};
-  if(existing){const index=list.findIndex(p=>p.id===editId);list[index]=record;}else list.push(record);
-  write(DB,list);cancelProductEdit();refreshAdmin();renderProducts();alert(existing?"Produto atualizado!":"Produto cadastrado!");
- });
- $("#cancel-edit-btn").addEventListener("click",cancelProductEdit);
- $("#reset-products").addEventListener("click",()=>{if(confirm("Restaurar os produtos de exemplo?")){write(DB,seed);refreshAdmin();renderProducts()}});
- $$("[data-site-image]").forEach(input=>input.addEventListener("change",async()=>{const file=input.files[0];if(!file)return;const images=read(IMAGES,{});images[input.dataset.siteImage]=await compressImage(file);write(IMAGES,images);loadSiteImages();alert("Imagem atualizada neste navegador.")}));
- $("#new-alert").addEventListener("click",()=>{const samples=["Movimento detectado na área externa (simulação).","Verificação de sinal concluída (simulação).","Acesso registrado na entrada principal (simulação)."];const p=document.createElement("p");p.textContent=new Date().toLocaleTimeString("pt-BR")+" — "+samples[Math.floor(Math.random()*samples.length)];$("#alerts").prepend(p)});
- // Ferramentas do painel de câmeras (todas em modo demonstrativo)
- const updateCameraClock=()=>{const now=new Date();$("#camera-clock").textContent=now.toLocaleTimeString("pt-BR");$("#camera-date").textContent=now.toLocaleDateString("pt-BR")};
- updateCameraClock();setInterval(updateCameraClock,1000);
- const saveImage=(imgId,name)=>{const img=$("#"+imgId);if(!img)return;const a=document.createElement("a");a.href=img.src;a.download=name;document.body.appendChild(a);a.click();a.remove()};
- $$("[data-snapshot]").forEach(btn=>btn.addEventListener("click",()=>saveImage(btn.dataset.snapshot,"voltseg-"+btn.dataset.snapshot+".jpg")));
- $("#snapshot-all").addEventListener("click",()=>{["cam-img-1","cam-img-2","cam-img-3"].forEach((id,i)=>setTimeout(()=>saveImage(id,["frente-da-casa","rua","garagem"][i]+"-voltseg.jpg"),i*350))});
- $$(".expand-camera").forEach(btn=>btn.addEventListener("click",()=>{const card=btn.closest(".camera-feed"),img=card.querySelector("img");$("#lightbox-image").src=img.src;$("#lightbox-title").textContent=card.querySelector(".feed-overlay b").textContent;$("#camera-lightbox").hidden=false}));
- $("#close-lightbox").addEventListener("click",()=>$("#camera-lightbox").hidden=true);
- $("#camera-lightbox").addEventListener("click",e=>{if(e.target.id==="camera-lightbox")$("#camera-lightbox").hidden=true});
- $$("[data-layout]").forEach(btn=>btn.addEventListener("click",()=>{const grid=$("#camera-grid");$$("[data-layout]").forEach(b=>b.classList.toggle("active",b===btn));grid.classList.remove("focus-mode");$$(".premium-feed").forEach(c=>c.classList.remove("focused"));if(btn.dataset.layout==="focus"){grid.classList.add("focus-mode");const chosen=$$(".premium-feed").find(c=>c.dataset.camera==="cam1");chosen?.classList.add("focused");}}));
+
  $$(".premium-feed").forEach(card=>card.addEventListener("dblclick",()=>{const grid=$("#camera-grid");grid.classList.add("focus-mode");$$(".premium-feed").forEach(c=>c.classList.toggle("focused",c===card));$$("[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout==="focus"))}));
  if(sessionStorage.getItem("voltseg_employee")==="yes"){$("#employee-login").hidden=true;$("#employee-dashboard").hidden=false;refreshAdmin()}
  renderProducts();renderCart();loadSiteImages();
